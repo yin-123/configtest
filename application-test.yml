@@ -1,0 +1,114 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://114.215.137.238:3306/kppw?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=CTT&allowMultiQueries=true
+      username: MwnwGTot
+      password: Rq!&inR44z06TBs@
+      initial-size: 10
+      max-active: 100
+      min-idle: 10
+      max-wait: 60000
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      #Oracle需要打开注释
+      #validation-query: SELECT 1 FROM DUAL
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      stat-view-servlet:
+        enabled: true
+        url-pattern: /druid/*
+        #login-username: admin
+        #login-password: admin
+      filter:
+        stat:
+          log-slow-sql: true
+          slow-sql-millis: 1000
+          merge-sql: false
+        wall:
+          config:
+            multi-statement-allow: true
+
+# 发送邮件配置
+alidm:
+  smtpHost: 'smtpdm.aliyun.com'
+  smtpPort: '465' # 或"80"
+  smtpUser: 'salarysuit@mail.salarysuit.com' # 账号
+  smtpPassword: 'XINxiu0001' #密码
+
+# 项目信息配置
+theCurrentSystem:
+  title: 薪秀网
+  loginPage: http://testpc.salarysuit.com/salarysuit/login.html
+  channelTitle: 薪秀网渠道端平台
+  channelLoginPage: http://testagent.salarysuit.com
+
+# 短信配置
+sendTextMessage:
+  url: 'http://47.111.21.63:8088/smsGBK.aspx' # URL
+  action: 'send' # 发送任务命令 设置为固定的:send
+  userid: '116' # 企业Id
+  account: 'C00122' # 用户帐号，由系统管理员
+  password: 'hongwei0122' # 密码
+  content: '【薪秀网】您有一个新的签约（姓名%s，身份证后四位%s）,请到微信中搜索小程序“薪秀网”进行实名签署！'
+  flag: true # true 外商短信 false 阿里云短信
+
+# 银企直连配置
+thefactconfiguration:
+  URL: 'http://94.191.116.123:8080' #前置机连接路径
+  LGNNAM: '银企直连测试用户100' #连接前置机用户名
+  BUSMOD: '00001' #业务编号
+  CCYNBR: '10' #币种暂时只支持 10-人民币
+  TRSTYP: 'BYBK' # 交易代码  代发其他
+  theInterfaceName: { # 接口名称
+    GetTransInfo: GetTransInfo, # 查询账户交易信息
+    AgentRequest: AgentRequest, # 对私支付
+    GetBbkInfo: GetBbkInfo, # 根据对公账号查询分行号
+    NTAGCINN: NTAGCINN, # 查询交易概要信息
+    GetAgentDetail: GetAgentDetail, # 查询交易明细信息
+    DCPAYMNT: DCPAYMNT, # 批量支付
+    NTSTLINF: NTSTLINF, # 批量查询支付信息
+    NTDMAADD: NTDMAADD, # 创建虚拟户
+    NTDMTLST: NTDMTLST, # 查询虚拟户当天交易
+    NTDMABAL: NTDMABAL, # 查询虚拟户余额和当月积数
+    NTDMATRX: NTDMATRX, # 虚拟户内部转账
+    NTHKPACT: NTHKPACT, # 手工记账
+    NTHCLACT: NTHCLACT  # 虚拟户冲账
+  }
+  abnormalContactMobilePhoneNumber: 18037378457 # 请求银行接口异常 推送异常信息
+
+# FTP服务器
+ftp:
+  host: 'test.etbin.cn' # FTP服务器hostname
+  port: 21 # FTP服务器端口
+  userName: 'xinxiuuser' # FTP登录账号
+  password: 'henanzhenhui' # FTP登录密码
+  basePath: 'upload'
+
+# 杭州市民卡
+hangzhouCitizenCard:
+  cancelAfterVerificationUrl: https://www.salarysuit.com/test-api/api/cancelAfterVerification # 核销接口
+  collectCancelAfterVerificationUrl: https://www.salarysuit.com/test-api/api/collectCancelAfterVerification # 收账核销接口
+
+monitorUrl: https://interplat.hnzhrj.com/InfoApi/Post
+
+#中信配置
+zhongxinPay:
+  userName: 'QFWLMGS'  #登录名
+#  url: 'http://192.168.1.12:6789' #前置机地址
+  url: http://zhongxin.vaiwan.com
+  controlFlag: '0' # 控制标签char(1)，0：客户系统不兼容银行端新增返回字段1：客户系统兼容银行端新增返回字段，标签可空
+  groupFlag: '1' #集群标志char(1)，0：非集群；1：集群，标签和内容都可空
+  lowAmount: 0 #最小金额
+  upAmount: 10000000 # 最大金额
+#  groupBannk: 8110901012200612549
+  dingding: '测试'
+
+
+#公安三返回路径地址前缀
+path:
+  pathPre: 'https://valstest.eidlink.com:10003/'
